@@ -31,33 +31,38 @@
         </th>
         <th></th>
     </tr>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.naziv)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.opis)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.kategorija)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.proizvođač)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dobavljač)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cena)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+            </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.naziv)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.opis)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.kategorija)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.proizvođač)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dobavljač)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cena)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+        }
+
+    }
 
 </table>

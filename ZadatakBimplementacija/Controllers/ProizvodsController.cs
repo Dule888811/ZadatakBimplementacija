@@ -7,21 +7,36 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ZadatakBimplementacija.Models;
+using ZadatakBimplementacija.Repository;
+using ZadatakBimplementacija.Repository.IRepository;
 
 namespace ZadatakBimplementacija.Controllers
 {
     public class ProizvodsController : Controller
     {
-        private ZadatakImplementacijaB db = new ZadatakImplementacijaB();
+        private readonly IProizvodsRepository _proizvodsRepository;
+
+        public ProizvodsController(ProizvodsRepository proizvodsRepository)
+        {
+            this._proizvodsRepository = proizvodsRepository;
+        }
 
         // GET: Proizvods
         public ActionResult Index()
         {
-            return View(db.Proizvods.ToList());
+            if (this._proizvodsRepository.Get() == null)
+            {
+                return View();
+            }
+            else {
+                return View(this._proizvodsRepository.Get().ToList());
+            };
+
+            
         }
 
         // GET: Proizvods/Details/5
-        public ActionResult Details(int? id)
+  /*      public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -122,6 +137,6 @@ namespace ZadatakBimplementacija.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
+        } */
     }
 }
