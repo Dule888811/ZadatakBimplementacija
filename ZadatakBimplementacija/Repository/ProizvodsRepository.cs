@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using ZadatakBimplementacija.Models;
@@ -23,6 +24,11 @@ namespace ZadatakBimplementacija.Repository
                 return null;
             }
             return proizvodi;
+        }
+        public void AddProizvod(Proizvod Proizvod)
+        {
+            context.Proizvods.Add(Proizvod);
+            base.SaveChanges();
         }
     }
 }

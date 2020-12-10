@@ -9,5 +9,6 @@ namespace ZadatakBimplementacija.Repository.IRepository
     public interface IProizvodsRepository
     {
         IQueryable<Proizvod> Get();
+        void AddProizvod(Proizvod Proizvod);
     }
 }
