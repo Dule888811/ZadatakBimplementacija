@@ -1,6 +1,7 @@
 ﻿namespace ZadatakBimplementacija.Migrations
 {
     using System;
+    using System.Data;
     using System.Data.Entity.Migrations;
     
     public partial class Initial : DbMigration
