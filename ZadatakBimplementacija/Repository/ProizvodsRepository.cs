@@ -30,5 +30,20 @@ namespace ZadatakBimplementacija.Repository
             context.Proizvods.Add(Proizvod);
             base.SaveChanges();
         }
+
+        public Proizvod GetById(int id)
+        {
+            return context.Proizvods.Find(id);
+        }
+
+        public void EditDocument(Proizvod Proizvod)
+        {
+            context.Entry(Proizvod).State = EntityState.Modified;
+            base.SaveChanges();
+        }
+        public void Dispose()
+        {
+            context.Dispose();
+        }
     }
 }

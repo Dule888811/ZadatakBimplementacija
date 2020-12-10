@@ -10,5 +10,8 @@ namespace ZadatakBimplementacija.Repository.IRepository
     {
         IQueryable<Proizvod> Get();
         void AddProizvod(Proizvod Proizvod);
+        Proizvod GetById(int id);
+        void EditDocument(Proizvod Proizvod);
+        void Dispose();
     }
 }

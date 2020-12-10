@@ -56,108 +56,44 @@ namespace ZadatakBimplementacija.Controllers
                 return View(Proizvod);
         }
 
-        // GET: Proizvods/Details/5
-        /*      public ActionResult Details(int? id)
-              {
-                  if (id == null)
-                  {
-                      return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                  }
-                  Proizvod proizvod = db.Proizvods.Find(id);
-                  if (proizvod == null)
-                  {
-                      return HttpNotFound();
-                  }
-                  return View(proizvod);
-              }
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Proizvod Proizvod = this._proizvodsRepository.GetById((int)id);
+            
+            if (Proizvod == null)
+            {
+                return HttpNotFound();
+            }
+            return View(Proizvod);
+        }
 
-              // GET: Proizvods/Create
-              public ActionResult Create()
-              {
-                  return View();
-              }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "id,naziv,opis,kategorija,proizvođač,dobavljač,cena")] Proizvod Proizvod)
+        {
+           
 
-              // POST: Proizvods/Create
-              // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-              // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-              [HttpPost]
-              [ValidateAntiForgeryToken]
-              public ActionResult Create([Bind(Include = "id,naziv,opis,kategorija,proizvođač,dobavljač,cena")] Proizvod proizvod)
-              {
-                  if (ModelState.IsValid)
-                  {
-                      db.Proizvods.Add(proizvod);
-                      db.SaveChanges();
-                      return RedirectToAction("Index");
-                  }
+            if (ModelState.IsValid)
+            {
+                this._proizvodsRepository.EditDocument(Proizvod);
+                return RedirectToAction("Index");
+            }
+            return View(Proizvod);
+        }
 
-                  return View(proizvod);
-              }
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                this._proizvodsRepository.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
-              // GET: Proizvods/Edit/5
-              public ActionResult Edit(int? id)
-              {
-                  if (id == null)
-                  {
-                      return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                  }
-                  Proizvod proizvod = db.Proizvods.Find(id);
-                  if (proizvod == null)
-                  {
-                      return HttpNotFound();
-                  }
-                  return View(proizvod);
-              }
-
-              // POST: Proizvods/Edit/5
-              // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-              // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-              [HttpPost]
-              [ValidateAntiForgeryToken]
-              public ActionResult Edit([Bind(Include = "id,naziv,opis,kategorija,proizvođač,dobavljač,cena")] Proizvod proizvod)
-              {
-                  if (ModelState.IsValid)
-                  {
-                      db.Entry(proizvod).State = EntityState.Modified;
-                      db.SaveChanges();
-                      return RedirectToAction("Index");
-                  }
-                  return View(proizvod);
-              }
-
-              // GET: Proizvods/Delete/5
-              public ActionResult Delete(int? id)
-              {
-                  if (id == null)
-                  {
-                      return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                  }
-                  Proizvod proizvod = db.Proizvods.Find(id);
-                  if (proizvod == null)
-                  {
-                      return HttpNotFound();
-                  }
-                  return View(proizvod);
-              }
-
-              // POST: Proizvods/Delete/5
-              [HttpPost, ActionName("Delete")]
-              [ValidateAntiForgeryToken]
-              public ActionResult DeleteConfirmed(int id)
-              {
-                  Proizvod proizvod = db.Proizvods.Find(id);
-                  db.Proizvods.Remove(proizvod);
-                  db.SaveChanges();
-                  return RedirectToAction("Index");
-              }
-
-              protected override void Dispose(bool disposing)
-              {
-                  if (disposing)
-                  {
-                      db.Dispose();
-                  }
-                  base.Dispose(disposing);
-              } */
+     
     }
 }
