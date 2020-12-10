@@ -17,7 +17,8 @@
                    opis = c.String(nullable: false),
                    kategorija = c.String(nullable: false),
                    cena = c.Double(nullable: false),
-                   proizvođač = c.String(nullable: false)
+                   proizvođač = c.String(nullable: false),
+                   dobavljač = c.String(nullable: false)
                })
                .PrimaryKey(t => t.id)
              ;

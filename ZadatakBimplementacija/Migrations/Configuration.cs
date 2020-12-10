@@ -16,7 +16,7 @@
 
         protected override void Seed(ZadatakBimplementacija.Models.ZadatakImplementacijaB context)
         {
-          /*  context.Proizvods.AddOrUpdate( i => i.opis,
+         /*   context.Proizvods.AddOrUpdate( i => i.opis,
                 new Proizvod
                 {
                     naziv = "When Harry Met Sally",
@@ -55,7 +55,7 @@
             });
 
             context.SaveChanges();
-            base.Seed(context); */
+            */
         }
         }
 }

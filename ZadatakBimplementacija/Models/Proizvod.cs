@@ -16,7 +16,7 @@ namespace ZadatakBimplementacija.Models
         public string naziv { get; set; }
 
      //   [MaxLength(850)]
-      //  [Index(IsUnique = true)]
+    //    [Index(IsUnique = true)]
         public string opis { get; set; }
 
         public string kategorija { get; set; }
